@@ -26,6 +26,14 @@ public enum CodableBoolOrString: Codable, Hashable, ExpressibleByBooleanLiteral,
     case bool(Bool)
     case string(String)
 
+    public var string: String {
+
+        switch self {
+        case .bool(let bool): return "\(bool)"
+        case .string(let string): return string
+        }
+    }
+
     // MARK: - Codable
 
     public init(from decoder: Decoder) throws {
