@@ -21,10 +21,12 @@ import Foundation
  let person = try! JSONDecoder().decode([Blog].self, from: jsonData)
  ```
  */
-public enum CodableBoolOrString: Codable, Hashable
+public enum CodableBoolOrString: Codable, Hashable, ExpressibleByBooleanLiteral, ExpressibleByStringLiteral
 {
     case bool(Bool)
     case string(String)
+
+    // MARK: - Codable
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -51,5 +53,17 @@ public enum CodableBoolOrString: Codable, Hashable
         case .string(let string):
             try container.encode(string)
         }
+    }
+
+    // MARK: - ExpressibleByBooleanLiteral
+
+    public init(booleanLiteral value: Bool) {
+        self = .bool(value)
+    }
+
+    // MARK: - ExpressibleByStringLiteral
+
+    public init(stringLiteral value: String) {
+        self = .string(value)
     }
 }

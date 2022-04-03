@@ -31,6 +31,24 @@ final class CodableBoolOrStringTests: XCTestCase
     private let paywallStringJSON = "{\"paywall_access\":\"disabled\"}"
     private let paywallBoolJSON = "{\"paywall_access\":true}"
 
+    func testExpressibleByBooleanLiteral() {
+        let instance: CodableBoolOrString = true
+        guard case let CodableBoolOrString.bool(value) = instance else {
+            XCTFail("Expected to create a .bool")
+            return
+        }
+        XCTAssertTrue(value)
+    }
+
+    func testExpressibleByStringLiteral() {
+        let instance: CodableBoolOrString = "disabled"
+        guard case let CodableBoolOrString.string(value) = instance else {
+            XCTFail("Expected to create a .string")
+            return
+        }
+        XCTAssertEqual(value, "disabled")
+    }
+
     /// Encode to `{ "paywall_access": true }`.
     func testEncodeBool() throws
     {
