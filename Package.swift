@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
@@ -7,8 +7,8 @@ let package = Package(
         .iOS(.v15)
     ],
     products: [
-        .library(name: "CodableHelpers", type: .dynamic, targets: ["CodableHelpers"]),
-        .library(name: "CodableHelpersStatic", type: .static, targets: ["CodableHelpers"])
+        .library(name: "CodableHelpers", type: .static, targets: ["CodableHelpers"]),
+        .library(name: "CodableHelpersDynamic", type: .dynamic, targets: ["CodableHelpers"])
     ],
     dependencies: [
         .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.0.0")
