@@ -6,7 +6,8 @@ let package = Package(
     platforms: [
         .iOS(.v13),
         .macCatalyst(.v13),
-        .macOS(.v12)
+        .macOS(.v12),
+        .tvOS(.v14)
     ],
     products: [
         .library(name: "CodableHelpers", type: .static, targets: ["CodableHelpers"]),
