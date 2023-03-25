@@ -4,7 +4,9 @@ import PackageDescription
 let package = Package(
     name: "CodableHelpers",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v13),
+        .macCatalyst(.v13),
+        .macOS(.v12)
     ],
     products: [
         .library(name: "CodableHelpers", type: .static, targets: ["CodableHelpers"]),
