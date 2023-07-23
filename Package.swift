@@ -6,14 +6,14 @@ let package = Package(
     platforms: [
         .iOS(.v13),
         .macCatalyst(.v13),
-        .macOS(.v12),
+        .macOS(.v13),
         .tvOS(.v14)
     ],
     products: [
         .library(name: "CodableHelpers", targets: ["CodableHelpers"])
     ],
     dependencies: [
-        .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.0.0")
+        .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.1.0")
     ],
     targets: [
         .target(
