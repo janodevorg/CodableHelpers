@@ -10,8 +10,7 @@ let package = Package(
         .tvOS(.v14)
     ],
     products: [
-        .library(name: "CodableHelpers", type: .static, targets: ["CodableHelpers"]),
-        .library(name: "CodableHelpersDynamic", type: .dynamic, targets: ["CodableHelpers"])
+        .library(name: "CodableHelpers", targets: ["CodableHelpers"])
     ],
     dependencies: [
         .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.0.0")
