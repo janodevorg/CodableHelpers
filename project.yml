@@ -7,23 +7,34 @@ options:
   tabWidth: 4
   createIntermediateGroups: true
   deploymentTarget:
-    iOS: 15.4
+    iOS: 16.4
+    macOS: 13
 
 settings:
-    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+  CODE_SIGN_IDENTITY: iPhone Developer
+  CODE_SIGN_STYLE: Automatic
+  DEVELOPMENT_TEAM: PPSF6CNP8Q
+  # Mac Catalyst support
+  DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER: NO
+  SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+  SUPPORTS_MACCATALYST: NO
+  DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER: NO
+  # Compiler
+  CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+  DEAD_CODE_STRIPPING: YES
 
 targets:
 
   CodableHelpers:
     type: framework
-    platform: iOS
+    platform: [iOS, macOS]
     scheme:
       testTargets:
          - CodableHelpersTests
     settings:
        CURRENT_PROJECT_VERSION: 1
        INFOPLIST_FILE: targets/main/Info.plist
-       IPHONEOS_DEPLOYMENT_TARGET: 15.4
+       IPHONEOS_DEPLOYMENT_TARGET: 16.4
        PRODUCT_BUNDLE_IDENTIFIER: dev.jano.codablehelpers
        PRODUCT_NAME: CodableHelpers
     sources: 
@@ -35,10 +46,10 @@ targets:
     platform: iOS
     settings:
       INFOPLIST_FILE: targets/tests/Info.plist
-      IPHONEOS_DEPLOYMENT_TARGET: 15.4
+      IPHONEOS_DEPLOYMENT_TARGET: 16.4
       PRODUCT_BUNDLE_IDENTIFIER: dev.jano.codablehelpers.tests
       TEST_HOST:
     sources:
       - sources/tests
     dependencies:
-      - target: CodableHelpers
+      - target: CodableHelpers_iOS
